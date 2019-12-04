@@ -293,11 +293,9 @@
 
 <!-- Henry 11/25/2019 Start -->
 <script type="text/javascript">
-    var r = document.getElementById('result');
 
     function startConverting() {
-        r.innerHTML='';
-
+        var r = document.getElementById('result');
         if ('webkitSpeechRecognition' in window) {
             var speechRecognizer = new webkitSpeechRecognition();
             speechRecognizer.continuous = true;
