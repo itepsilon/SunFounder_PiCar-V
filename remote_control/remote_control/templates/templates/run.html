@@ -1,383 +1,394 @@
 {% load static %}
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="save" content="history">
-    <link rel = "Shortcut Icon" href="{% static 'favicon.ico' %} ">
-    <link href="//cdn.muicss.com/mui-0.6.9/css/mui.min.css" rel="stylesheet" type="text/css" />
-    <script src="//cdn.muicss.com/mui-0.6.9/js/mui.min.js"></script>
-    <script type="text/javascript">
-      function keydown_event(key){
-        var a=key
-      }
-      function keyup_event(key){
-        var a=key
-      }
-    </script>
-    <style type="text/css">
-      html {
-        height: 100%;
-        width:  100%;
-        overflow: hidden;
-      }
-      body {
-        height: 100%;
-        width:  100%;
-      }
-      #div_appbar {
-        width:  100%;
-      }
-      #div_streamer {
-        background: url(http://{{host}}:8080/?action=stream) no-repeat center center; 
-        background-size: auto 90%;
-        width:  100%;
-        height:  100%;
-        position:relative;
-      }
-      #div_control {
-        width:  100%;
-        position: absolute;
-        bottom: 0;
-      }
-      /* // Henry 11/25/2019 Start
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="save" content="history">
+  <link rel="Shortcut Icon" href="{% static 'favicon.ico' %} ">
+  <link href="//cdn.muicss.com/mui-0.6.9/css/mui.min.css" rel="stylesheet" type="text/css" />
+  <script src="//cdn.muicss.com/mui-0.6.9/js/mui.min.js"></script>
+  <script type="text/javascript">
+    function keydown_event(key) {
+      var a = key
+    }
+    function keyup_event(key) {
+      var a = key
+    }
+  </script>
+  <style type="text/css">
+    html {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      height: 100%;
+      width: 100%;
+    }
+
+    #div_appbar {
+      width: 100%;
+    }
+
+    #div_streamer {
+      background: url(http://{{host}}:8080/?action=stream) no-repeat center center;
+      background-size: auto 90%;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    #div_control {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+    }
+
+    /* // Henry 11/25/2019 Start
       // #button_opacity {
       // Henry 11/25/2019 End  */
-      .button_opacity {
-        opacity: 0.4;
-      }
+    .button_opacity {
+      opacity: 0.4;
+    }
+  </style>
 
-    </style>
-
-<!-- Henry 11/25/2019 Start -->
-<style type="text/css">
-/* //    body {
+  <!-- Henry 11/25/2019 Start -->
+  <style type="text/css">
+    /* //    body {
 //        font-family: verdana;
 //    } */
 
     #result {
-        height: 100px;
-        border: 1px solid #ccc;
-        padding: 10px;
-        box-shadow: 0 0 10px 0 #bbb;
-        margin-bottom: 30px;
-        font-size: 14px;
-        line-height: 25px;
+      height: 100px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      box-shadow: 0 0 10px 0 #bbb;
+      margin-bottom: 30px;
+      font-size: 14px;
+      line-height: 25px;
     }
 
-/* //    button {
+    /* //    button {
 //        font-size: 20px;
 //        position: relative;
 //        left: 50%;
 //    } */
-</style>
-<!-- Henry 11/25/2019 End -->
+  </style>
+  <!-- Henry 11/25/2019 End -->
 
 
-  </head>
+</head>
 
-  <body class="mui--no-user-select" onkeydown="keydown_event(0)" onkeyup="keyup_event(0)">
+<body class="mui--no-user-select" onkeydown="keydown_event(0)" onkeyup="keyup_event(0)">
 
-<!-- Henry 11/25/2019 Start -->
-<script src="http://code.responsivevoice.org/responsivevoice.js"></script>
-<link rel="stylesheet" type="text/css" 
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css" />
-<!-- Henry 11/25/2019 End -->
+  <!-- Henry 11/25/2019 Start -->
+  <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css" />
+  <!-- Henry 11/25/2019 End -->
 
 
-    <div id="div_appbar">
-      <div class="mui--z2 mui-appbar mui-container-fluid mui--bg-primary-dark 
+  <div id="div_appbar">
+    <div class="mui--z2 mui-appbar mui-container-fluid mui--bg-primary-dark 
                  mui--appbar-min-height mui--appbar-line-height">
-        <div class="mui-row">
-          <div class="mui-col-xs-1 mui-col-sm-1", align="right">
-            <form class="mui-form" action="/" method="get" id="back">
-              <button class="mui-btn mui-btn--flat mui-btn--small" form="back" 
-                 style="background-color:#000000;background-color:rgba(0,0,0,0)">
-                 <img src="{% static "back_unpressed.png" %}"></button>
-            </form>
-          </div>
-          <div class="mui-col-xs-10 mui-col-md-10 mui--text-headline", align="center">
-            <div class="mui--appbar-height mui--appbar-line-height">
-              PiCar-V
-            </div>
-          </div>
-          <div class="mui-col-xs-1 mui-col-sm-1", align="left">
-            <form class="mui-form" action="/cali/" method="get" id="settings">
-              <button class="mui-btn mui-btn--flat mui-btn--small" form="settings" 
-                 style="background-color:#000000;background-color:rgba(0,0,0,0)">
-                 <img src="{% static "settings_unpressed.png" %}"></button>
-            </form>
+      <div class="mui-row">
+        <div class="mui-col-xs-1 mui-col-sm-1" , align="right">
+          <form class="mui-form" action="/" method="get" id="back">
+            <button class="mui-btn mui-btn--flat mui-btn--small" form="back"
+              style="background-color:#000000;background-color:rgba(0,0,0,0)">
+              <img src="{% static "back_unpressed.png" %}"></button>
+          </form>
+        </div>
+        <div class="mui-col-xs-10 mui-col-md-10 mui--text-headline" , align="center">
+          <div class="mui--appbar-height mui--appbar-line-height">
+            PiCar-V
           </div>
         </div>
+        <div class="mui-col-xs-1 mui-col-sm-1" , align="left">
+          <form class="mui-form" action="/cali/" method="get" id="settings">
+            <button class="mui-btn mui-btn--flat mui-btn--small" form="settings"
+              style="background-color:#000000;background-color:rgba(0,0,0,0)">
+              <img src="{% static "settings_unpressed.png" %}"></button>
+          </form>
+        </div>
       </div>
-      <br>
     </div>
-    <script type="text/javascript">
-      run_action('bwready');
-      run_action('fwready');
-      run_action('camready');
-      var allowed = true;
-      function run_action(value){
-        var xmlHttp  = new XMLHttpRequest();
-        var protocol  = window.location.protocol;
-        var host      = window.location.host;
-        var pathname  = window.location.pathname;
-        url = protocol + "//" + host + pathname + "?action" + "=" + value;
-        xmlHttp.open( "GET", url, false );
-        xmlHttp.send( null );
-        return xmlHttp.responseText;
+    <br>
+  </div>
+  <script type="text/javascript">
+    run_action('bwready');
+    run_action('fwready');
+    run_action('camready');
+    var allowed = true;
+    function run_action(value) {
+      var xmlHttp = new XMLHttpRequest();
+      var protocol = window.location.protocol;
+      var host = window.location.host;
+      var pathname = window.location.pathname;
+      url = protocol + "//" + host + pathname + "?action" + "=" + value;
+      xmlHttp.open("GET", url, false);
+      xmlHttp.send(null);
+      return xmlHttp.responseText;
+    }
+    function set_speed(value) {
+      var xmlHttp = new XMLHttpRequest();
+      var protocol = window.location.protocol;
+      var host = window.location.host;
+      var pathname = window.location.pathname;
+      url = protocol + "//" + host + pathname + "?speed" + "=" + value;
+      xmlHttp.open("GET", url, false);
+      xmlHttp.send(null);
+      return xmlHttp.responseText;
+    }
+    function keydown_event(key) {
+      if (event.repeat != undefined) {
+        allowed = !event.repeat;
       }
-      function set_speed(value){
-        var xmlHttp  = new XMLHttpRequest();
-        var protocol  = window.location.protocol;
-        var host      = window.location.host;
-        var pathname  = window.location.pathname;
-        url = protocol + "//" + host + pathname + "?speed" + "=" + value;
-        xmlHttp.open( "GET", url, false );
-        xmlHttp.send( null );
-        return xmlHttp.responseText;
-      }
-      function keydown_event(key){
-        if (event.repeat != undefined) {
-          allowed = !event.repeat;
+      if (!allowed) return;
+      allowed = false;
+      if (key == 0) {
+        var x;
+        if (window.event) {
+          x = event.keyCode;
         }
-        if (!allowed) return;
-        allowed = false;
-        if (key == 0){
-          var x;
-          if(window.event) {
-            x=event.keyCode;
-          }
-          else if(event.which) {
-            x=event.which;
-          }
-          var keychar=String.fromCharCode(x);
+        else if (event.which) {
+          x = event.which;
         }
-        else{
-          keychar = key
+        var keychar = String.fromCharCode(x);
+      }
+      else {
+        keychar = key
+      }
+      switch (keychar) {
+        case 'W':
+          run_action('forward')
+          break;
+        case 'S':
+          run_action('backward')
+          break;
+        case 'A':
+          run_action('fwleft')
+          break;
+        case 'D':
+          run_action('fwright')
+          break;
+        case '&':
+          run_action('camup')
+          break;
+        case '(':
+          run_action('camdown')
+          break;
+        case "'":
+          run_action('camright')
+          break;
+        case '%':
+          run_action('camleft')
+          break;
+        case '1':
+          set_speed('40')
+          break;
+        case '2':
+          set_speed('55')
+          break;
+        case '3':
+          set_speed('70')
+          break;
+        case "4":
+          set_speed('85')
+          break;
+        case '5':
+          set_speed('100')
+          break;
+      }
+    }
+    function keyup_event(key) {
+      allowed = true;
+      if (key == 0) {
+        var x;
+        if (window.event) {
+          x = event.keyCode;
         }
-        switch(keychar){
-          case 'W':
-            run_action('forward')
-            break;
-          case 'S':
-            run_action('backward')
-            break;
-          case 'A':
-            run_action('fwleft')
-            break;
-          case 'D':
-            run_action('fwright')
-            break;
-          case '&':
-            run_action('camup')
-            break;
-          case '(':
-            run_action('camdown')
-            break;
-          case "'":
-            run_action('camright')
-            break;
-          case '%':
-            run_action('camleft')
-            break;
-          case '1':
-            set_speed('40')
-            break;
-          case '2':
-            set_speed('55')
-            break;
-          case '3':
-            set_speed('70')
-            break;
-          case "4":
-            set_speed('85')
-            break;
-          case '5':
-            set_speed('100')
-            break;
+        else if (event.which) {
+          x = event.which;
         }
+        var keychar = String.fromCharCode(x);
       }
-      function keyup_event(key){
-        allowed = true;
-        if (key == 0){
-          var x;
-          if(window.event) {
-            x=event.keyCode;
-          }
-          else if(event.which) {
-            x=event.which;
-          }
-          var keychar=String.fromCharCode(x);
-        }
-        else{
-          keychar = key
-        }
-        switch(keychar){
-          case 'W':
-            run_action('stop')
-            break;
-          case 'S':
-            run_action('stop')
-            break;
-          case 'A':
-            run_action('fwstraight')
-            break;
-          case 'D':
-            run_action('fwstraight')
-            break;
-          case '&':
-            run_action('camready')
-            break;
-          case '(':
-            run_action('camready')
-            break;
-          case "'":
-            run_action('camready')
-            break;
-          case '%':
-            run_action('camready')
-            break;
-        }
+      else {
+        keychar = key
       }
-      function forward_left(){
-        run_action('forward')
-        run_action('fwleft')
+      switch (keychar) {
+        case 'W':
+          run_action('stop')
+          break;
+        case 'S':
+          run_action('stop')
+          break;
+        case 'A':
+          run_action('fwstraight')
+          break;
+        case 'D':
+          run_action('fwstraight')
+          break;
+        case '&':
+          run_action('camready')
+          break;
+        case '(':
+          run_action('camready')
+          break;
+        case "'":
+          run_action('camready')
+          break;
+        case '%':
+          run_action('camready')
+          break;
       }
-      function forward_right(){
-        run_action('forward')
-        run_action('fwright')
-      }
-      function backward_left(){
-        run_action('backward')
-        run_action('fwleft')
-      }
-      function backward_right(){
-        run_action('backward')
-        run_action('fwright')
-      }
-      function camup_left(){
-        run_action('camup')
-        run_action('camleft')
-      }
-      function camup_right(){
-        run_action('camup')
-        run_action('camright')
-      }
-      function camdown_left(){
-        run_action('camdown')
-        run_action('camleft')
-      }
-      function camdown_right(){
-        run_action('camdown')
-        run_action('camright')
-      }
-      function stop(){
-        run_action('stop')
-        run_action('fwstraight')
-      }
-      function toggle(targetid){
-        if (document.getElementById){
-          target=document.getElementById(targetid);
-            if (target.style.display=="block"){
-              target.style.display="none";
-            } else {
-              target.style.display="block";
-            }
+    }
+    function forward_left() {
+      run_action('forward')
+      run_action('fwleft')
+    }
+    function forward_right() {
+      run_action('forward')
+      run_action('fwright')
+    }
+    function backward_left() {
+      run_action('backward')
+      run_action('fwleft')
+    }
+    function backward_right() {
+      run_action('backward')
+      run_action('fwright')
+    }
+    function camup_left() {
+      run_action('camup')
+      run_action('camleft')
+    }
+    function camup_right() {
+      run_action('camup')
+      run_action('camright')
+    }
+    function camdown_left() {
+      run_action('camdown')
+      run_action('camleft')
+    }
+    function camdown_right() {
+      run_action('camdown')
+      run_action('camright')
+    }
+    function stop() {
+      run_action('stop')
+      run_action('fwstraight')
+    }
+    function toggle(targetid) {
+      if (document.getElementById) {
+        target = document.getElementById(targetid);
+        if (target.style.display == "block") {
+          target.style.display = "none";
+        } else {
+          target.style.display = "block";
         }
       }
-    </script>
+    }
+  </script>
 
-<!-- Henry 11/25/2019 Start -->
-<script type="text/javascript">
+  <!-- Henry 11/25/2019 Start -->
+  <script type="text/javascript">
 
     function startConverting() {
-        var r = document.getElementById('result');
-        if ('webkitSpeechRecognition' in window) {
-            var speechRecognizer = new webkitSpeechRecognition();
-            speechRecognizer.continuous = true;
-            speechRecognizer.interimResults = true;
-            
-            // Define Language
-            speechRecognizer.lang = 'en-IN';
-            // speechRecognizer.lang = 'zh-TW';
-            
-            speechRecognizer.start();
-            var finalTranscripts = '';
-            
-            // Speech is converted into Text
-            speechRecognizer.onresult = function(event) {
-                var interimTranscripts = '';
-                for (var i = event.resultIndex; i < event.results.length; i++) {
-                    var transcript = event.results[i][0].transcript;
-                    transcript.replace("\n", "<br>");
-                    if (event.results[i].isFinal) {
-                        finalTranscripts += transcript;
-                        var speechresult = finalTranscripts;
-                        console.log(speechresult);
-                        
-                        // Text is converted into Speech
-                        // if (speechresult) {
-                        //    responsiveVoice.speak(speechresult, "UK English Female", {
-                        //        pitch: 1
-                        //    }, {
-                        //        rate: 1
-                        //    });
-                        //}
-                    } else {
-                        interimTranscripts += transcript;
-                    }
-                }
-                
-                resultTranscripts = finalTranscripts + '<span style="color:#999">' + interimTranscripts + '</span>';
-                r.innerHTML = resultTranscripts;
-                
-                if (resultTranscripts.indexOf('start') !== -1) {
-                   // alert('in loop');
-                   document.getElementById('start').click();
-                }
-                else if (resultTranscripts.indexOf('forward') !== -1) {
-                   // alert('in loop');
-                   console.log("Clicked Forward");
-                   document.getElementById('forward').click();
-                }
-                else if (resultTranscripts.indexOf('left') !== -1) {
-                   // alert('in loop');
-                   document.getElementById('forward_left').click();
-                }
-                else if (resultTranscripts.indexOf('right') !== -1) {
-                   // alert('in loop');
-                   document.getElementById('forward_right').click();
-                }
-                
-            };
-            speechRecognizer.onerror = function(event) {};
-        } else {
-            r.innerHTML = 'Your browser is not supported. If google chrome, please upgrade!';
-        }
+      var r = document.getElementById('result');
+      if ('webkitSpeechRecognition' in window) {
+        var speechRecognizer = new webkitSpeechRecognition();
+        speechRecognizer.continuous = true;
+        speechRecognizer.interimResults = true;
+
+        // Define Language
+        speechRecognizer.lang = 'en-IN';
+        // speechRecognizer.lang = 'zh-TW';
+
+        speechRecognizer.start();
+        var finalTranscripts = '';
+
+        // Speech is converted into Text
+        speechRecognizer.onresult = function (event) {
+          var interimTranscripts = '';
+          for (var i = event.resultIndex; i < event.results.length; i++) {
+            var transcript = event.results[i][0].transcript;
+            transcript.replace("\n", "<br>");
+            if (event.results[i].isFinal) {
+              finalTranscripts += transcript;
+              var speechresult = finalTranscripts;
+              console.log(speechresult);
+
+              // Text is converted into Speech
+              // if (speechresult) {
+              //    responsiveVoice.speak(speechresult, "UK English Female", {
+              //        pitch: 1
+              //    }, {
+              //        rate: 1
+              //    });
+              //}
+            } else {
+              interimTranscripts += transcript;
+            }
+          }
+
+          resultTranscripts = finalTranscripts + '<span style="color:#999">' + interimTranscripts + '</span>';
+          r.innerHTML = resultTranscripts;
+
+          if (resultTranscripts.indexOf('start') !== -1) {
+            // alert('in loop');
+            document.getElementById('start').click();
+            finalTranscripts = "";
+          }
+          else if (resultTranscripts.indexOf('forward') !== -1) {
+            // alert('in loop');
+            document.getElementById('forward').click();
+            finalTranscripts = "";
+          }
+          else if (resultTranscripts.indexOf('left') !== -1) {
+            // alert('in loop');
+            document.getElementById('forward_left').click();
+            finalTranscripts = "";
+          }
+          else if (resultTranscripts.indexOf('right') !== -1) {
+            // alert('in loop');
+            document.getElementById('forward_right').click();
+            finalTranscripts = "";
+          }
+          else if (resultTranscripts.indexOf('stop') !== -1) {
+            run_action('stop');
+            finalTranscripts = "";
+          }
+        };
+        speechRecognizer.onerror = function (event) { };
+      } else {
+        r.innerHTML = 'Your browser is not supported. If google chrome, please upgrade!';
+      }
     }
-</script>
-<!-- Henry 11/25/2019 End -->
+  </script>
+  <!-- Henry 11/25/2019 End -->
 
-    <div class="mui-container-fluid-height mui-container-fluid-line-height", id="div_streamer">
-      
-      <div id="div_control">
-        <div class="mui-row">
-<!-- Henry 11/25/2019 Start -->
-<hr>
-<h4 align="center">DeepPiCar is controlled by Speech</h4>
-<center>
-<div id="result"></div> 
-<button onclick="startConverting();"><i class="fa fa-microphone"></i></button>
-</center>
-<hr>
-<h4 align="center">DeepPiCar is controlled by Button</h4>
-<!-- Henry 11/25/2019 End -->
+  <div class="mui-container-fluid-height mui-container-fluid-line-height" , id="div_streamer">
 
-          <!-- Henry 11/25/2019 
+    <div id="div_control">
+      <div class="mui-row">
+        <!-- Henry 11/25/2019 Start -->
+        <hr>
+        <h4 align="center">DeepPiCar is controlled by Speech</h4>
+        <center>
+          <div id="result"></div>
+          <button onclick="startConverting();"><i class="fa fa-microphone"></i></button>
+        </center>
+        <hr>
+        <h4 align="center">DeepPiCar is controlled by Button</h4>
+        <!-- Henry 11/25/2019 End -->
+
+        <!-- Henry 11/25/2019 
           <button class="mui-btn mui--text-subhead" disabled>Speed:</button>
           <button class="mui-btn mui-btn--primary mui-btn--fab" onmousedown="set_speed('40')" 
              id="button_opacity">1</button>
@@ -393,25 +404,25 @@
              id="button_opacity">Fullscreen</button>
           Henry 11/25/2019 End -->
 
-          <!-- Henry 11/25/2019 -->
-          <button class="mui-btn mui-btn--primary mui-btn--fab button_opacity" onmousedown="set_speed('40')" 
-             id="speed_40">1</button>
-          <button class="mui-btn mui-btn--primary mui-btn--fab button_opacity" onmousedown="set_speed('55')" 
-             id="speed_55">2</button>
-          <button class="mui-btn mui-btn--primary mui-btn--fab button_opacity" onmousedown="set_speed('70')" 
-             id="speed_55">3</button>
-          <button class="mui-btn mui-btn--primary mui-btn--fab button_opacity" onmousedown="set_speed('85')" 
-             id="speed_55">4</button>
-          <button class="mui-btn mui-btn--primary mui-btn--fab button_opacity" onmousedown="set_speed('100')" 
-             id="speed_55">5</button>
-          <button class="mui-btn mui-btn--primary button_opacity" onmousedown="toggle('div_appbar')" 
-             id="fullscreen">Fullscreen
-          <!-- Henry 11/25/2019 End -->
-        </div>
-        <!-- Control Panel-->
-        <!--Forward, Camera up button  ◤◥-->
-        <div class="mui-row">
-          <!-- Henry 11/25/2019 Start
+        <!-- Henry 11/25/2019 -->
+        <button class="mui-btn mui-btn--primary mui-btn--fab button_opacity" onmousedown="set_speed('40')"
+          id="speed_40">1</button>
+        <button class="mui-btn mui-btn--primary mui-btn--fab button_opacity" onmousedown="set_speed('55')"
+          id="speed_55">2</button>
+        <button class="mui-btn mui-btn--primary mui-btn--fab button_opacity" onmousedown="set_speed('70')"
+          id="speed_55">3</button>
+        <button class="mui-btn mui-btn--primary mui-btn--fab button_opacity" onmousedown="set_speed('85')"
+          id="speed_55">4</button>
+        <button class="mui-btn mui-btn--primary mui-btn--fab button_opacity" onmousedown="set_speed('100')"
+          id="speed_55">5</button>
+        <button class="mui-btn mui-btn--primary button_opacity" onmousedown="toggle('div_appbar')"
+          id="fullscreen">Fullscreen</button>
+        <!-- Henry 11/25/2019 End -->
+      </div>
+      <!-- Control Panel-->
+      <!--Forward, Camera up button  ◤◥-->
+      <div class="mui-row">
+        <!-- Henry 11/25/2019 Start
           <div class="mui-col-xs-2 mui-col-sm-2", align="right">
             <button class="mui-btn mui-btn--primary" ontouchstart="forward_left()"
                       ontouchend="stop()" id="button_opacity">◤</button>
@@ -438,89 +449,87 @@
           </div>
           Henry 11/25/2019 End -->
 
-          <!-- Henry 11/25/2019 Start -->
-          <div class="mui-col-xs-2 mui-col-sm-2", align="right">
-            <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="forward_left()"
-                      ontouchend="stop()" id="forward_left">◤</button>
-          </div>
-          <div class="mui-col-xs-2 mui-col-sm-2", align="center">
-            <!--
+        <!-- Henry 11/25/2019 Start -->
+        <div class="mui-col-xs-2 mui-col-sm-2" , align="right">
+          <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="forward_left()" ontouchend="stop()"
+            id="forward_left" onclick="forward_left()">◤</button>
+        </div>
+        <div class="mui-col-xs-2 mui-col-sm-2" , align="center">
+          <!--
             <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="run_start('start')" 
                       ontouchend="stop()" id="start">Start</button>
             -->
-            <form method="post"  action="deep_pi_car.py">
-            <input id="start" class="button" name="accept" 
-                      type="submit" value="Start" ontouchstart="run_action('forward')" />
-            </form>
-          </div>
-          <div class="mui-col-xs-2 mui-col-sm-2", align="center">
-            <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="run_action('forward')" 
-                      ontouchend="stop()" id="forward" onclick="run_action('forward')">▲</button>
-          </div>
-          <div class="mui-col-xs-2 mui-col-sm-2", align="left">
-            <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="forward_right()" 
-                      ontouchend="stop()" id="forward_right">◥</button>
-          </div>
-          <div class="mui-col-xs-2 mui-col-sm-2", align="right">
-            <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="camup_left()" 
-                      ontouchend="run_action('camready')" id="camp_left">◸</button>
-          </div>
-          <div class="mui-col-xs-2 mui-col-sm-2", align="center">
-            <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="run_action('camup')" 
-                      ontouchend="run_action('camready')" id="camp">△</button>
-          </div>
-          <div class="mui-col-xs-2 mui-col-sm-2", align="left">
-            <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="camup_right()" 
-                      ontouchend="run_action('camready')" id="camp_right">◹</button>
-          </div>
-          <!-- Henry 11/25/2019 End -->
+          <form method="post" action="deep_pi_car.py">
+            <input id="start" class="button" name="accept" type="submit" value="Start"
+              ontouchstart="run_action('forward')" />
+          </form>
         </div>
+        <div class="mui-col-xs-2 mui-col-sm-2" , align="center">
+          <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="run_action('forward')"
+            ontouchend="stop()" id="forward" onclick="run_action('forward')">▲</button>
+        </div>
+        <div class="mui-col-xs-2 mui-col-sm-2" , align="left">
+          <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="forward_right()" ontouchend="stop()"
+            id="forward_right" onclick="forward_right()">◥</button>
+        </div>
+        <div class="mui-col-xs-2 mui-col-sm-2" , align="right">
+          <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="camup_left()"
+            ontouchend="run_action('camready')" id="camp_left">◸</button>
+        </div>
+        <div class="mui-col-xs-2 mui-col-sm-2" , align="center">
+          <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="run_action('camup')"
+            ontouchend="run_action('camready')" id="camp">△</button>
+        </div>
+        <div class="mui-col-xs-2 mui-col-sm-2" , align="left">
+          <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="camup_right()"
+            ontouchend="run_action('camready')" id="camp_right">◹</button>
+        </div>
+        <!-- Henry 11/25/2019 End -->
+      </div>
 
 
-        <!--Camera Left, Right button-->
-        <div class="mui-row">
-          <!-- Henry 11/25/2019 Start
+      <!--Camera Left, Right button-->
+      <div class="mui-row">
+        <!-- Henry 11/25/2019 Start
           <div class="mui-col-xs-2 mui-col-sm-2 mui-col-sm-offset-6 mui-col-xs-offset-6", align="right">
             <button class="mui-btn mui-btn--primary" ontouchstart="run_action('camleft')" 
                       ontouchend="run_action('camready')" id="button_opacity">◁</button>
           </div>
           Henry 11/25/2019 End -->
-          <!-- Henry 11/25/2019 Start -->
-          <div class="mui-col-xs-2 mui-col-sm-2 mui-col-sm-offset-6 mui-col-xs-offset-6",
-              align="right">
-            <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="run_action('camleft')" 
-                      ontouchend="run_action('camready')" id="camleft">◁</button>
-          </div>
-          <!-- Henry 11/25/2019 End -->
+        <!-- Henry 11/25/2019 Start -->
+        <div class="mui-col-xs-2 mui-col-sm-2 mui-col-sm-offset-6 mui-col-xs-offset-6" , align="right">
+          <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="run_action('camleft')"
+            ontouchend="run_action('camready')" id="camleft">◁</button>
+        </div>
+        <!-- Henry 11/25/2019 End -->
 
 
-          <!--
+        <!--
           <div class="mui-col-xs-2 mui-col-sm-2", align="center">
             <button class="mui-btn mui-btn--primary" ontouchstart="run_action('camready')" 
                       ontouchend="run_action('camready')">□</button>
           </div>
           -->
 
-         <!-- Henry 11/25/2019
+        <!-- Henry 11/25/2019
           <div class="mui-col-xs-2 mui-col-sm-2 mui-col-sm-offset-2 mui-col-xs-offset-2", align="left">
             <button class="mui-btn mui-btn--primary" ontouchstart="run_action('camright')" 
                       ontouchend="run_action('camready')" id="button_opacity">▷</button>
           </div>
           Henry 11/25/2019 End -->
-          <!-- Henry 11/25/2019 Start -->
-          <div class="mui-col-xs-2 mui-col-sm-2 mui-col-sm-offset-2 mui-col-xs-offset-2 button_opacity", 
-                   align="left">
-            <button class="mui-btn mui-btn--primary" ontouchstart="run_action('camright')" 
-                      ontouchend="run_action('camready')" id="camright">▷</button>
-          </div>
-          <!-- Henry 11/25/2019 End -->
-
+        <!-- Henry 11/25/2019 Start -->
+        <div class="mui-col-xs-2 mui-col-sm-2 mui-col-sm-offset-2 mui-col-xs-offset-2 button_opacity" , align="left">
+          <button class="mui-btn mui-btn--primary" ontouchstart="run_action('camright')"
+            ontouchend="run_action('camready')" id="camright">▷</button>
         </div>
+        <!-- Henry 11/25/2019 End -->
+
+      </div>
 
 
 
-        <!--Backward button-->
-        <!-- Henry 11/25/2019
+      <!--Backward button-->
+      <!-- Henry 11/25/2019
        
         <<div class="mui-row">
           <div class="mui-col-xs-2 mui-col-sm-2", align="right">
@@ -550,35 +559,34 @@
         </div>
         Henry 11/25/2019 End -->
 
-          <!-- Henry 11/25/2019 Start -->
-         <div class="mui-col-xs-2 mui-col-sm-2", align="right">
-              <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="backward_left()" 
-                      ontouchend="stop()" id="backward_left">◣</button>
-          </div>
-          <div class="mui-col-xs-2 mui-col-sm-2", align="center">
-              <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="run_action('backward')" 
-                      ontouchend="stop()" id="backward">▼</button>
-          </div>
-          <div class="mui-col-xs-2 mui-col-sm-2", align="left">
-              <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="backward_right()" 
-                      ontouchend="stop()" id="backward_right">◢</button>
-          </div>
-          <div class="mui-col-xs-2 mui-col-sm-2", align="right">
-              <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="camdown_left()" 
-                      ontouchend="run_action('camready')" id="camdown_left">◺</button>
-          </div>
-          <div class="mui-col-xs-2 mui-col-sm-2", align="center">
-              <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="run_action('camdown')" 
-                      ontouchend="run_action('camready')" id="camdown">▽</button>
-          </div>
-          <div class="mui-col-xs-2 mui-col-sm-2", align="left">
-              <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="camdown_right()" 
-                      ontouchend="run_action('camready')" id="camdown_right">◿</button>
-          </div>
-          <!-- Henry 11/25/2019 End -->
-        </div>
+      <!-- Henry 11/25/2019 Start -->
+      <div class="mui-col-xs-2 mui-col-sm-2" , align="right">
+        <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="backward_left()" ontouchend="stop()"
+          id="backward_left" onclick="backward_left()">◣</button>
       </div>
+      <div class="mui-col-xs-2 mui-col-sm-2" , align="center">
+        <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="run_action('backward')"
+          ontouchend="stop()" id="backward" onclick="run_action('backward')">▼</button>
+      </div>
+      <div class="mui-col-xs-2 mui-col-sm-2" , align="left">
+        <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="backward_right()" ontouchend="stop()"
+          id="backward_right" onclick="backward_right()">◢</button>
+      </div>
+      <div class="mui-col-xs-2 mui-col-sm-2" , align="right">
+        <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="camdown_left()"
+          ontouchend="run_action('camready')" id="camdown_left">◺</button>
+      </div>
+      <div class="mui-col-xs-2 mui-col-sm-2" , align="center">
+        <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="run_action('camdown')"
+          ontouchend="run_action('camready')" id="camdown">▽</button>
+      </div>
+      <div class="mui-col-xs-2 mui-col-sm-2" , align="left">
+        <button class="mui-btn mui-btn--primary button_opacity" ontouchstart="camdown_right()"
+          ontouchend="run_action('camready')" id="camdown_right">◿</button>
+      </div>
+      <!-- Henry 11/25/2019 End -->
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
-    
