@@ -364,6 +364,10 @@
             run_action('stop');
             finalTranscripts = "";
           }
+          else if (resultTranscripts.indexOf('backward') !== -1) {
+            run_action('backward');
+            finalTranscripts = "";
+          }
         };
         speechRecognizer.onerror = function (event) { };
       } else {
