@@ -368,6 +368,11 @@
             run_action('backward');
             finalTranscripts = "";
           }
+          else if (resultTranscripts.indexOf('straight') !== -1) {
+            run_action('fwstraight');
+            finalTranscripts = "";
+          }
+          
         };
         speechRecognizer.onerror = function (event) { };
       } else {
